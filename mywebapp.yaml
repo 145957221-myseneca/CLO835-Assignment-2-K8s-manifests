@@ -2,26 +2,20 @@ apiVersion: v1
 kind: Pod
 metadata:
   labels:
-    run: appblue
-  name: appblue
+    run: mywebapp
+  name: mywebapp
   namespace: webapp
 spec:
   containers:
   - env:
     - name: DBHOST
       value: 10.244.0.35
-    - name: DBUSER
-      value: root
     - name: DBPWD
       value: Prason1234
-    - name: DATABASE
-      value: employees
-    - name: APP_COLOR
-      value: blue
     - name: DBPORT
       value: "3306"
     image: 168491602991.dkr.ecr.us-east-1.amazonaws.com/webapp-repo:v1
-    name: appblue
+    name: mywebapp
     ports:
     - containerPort: 8080
       protocol: TCP
