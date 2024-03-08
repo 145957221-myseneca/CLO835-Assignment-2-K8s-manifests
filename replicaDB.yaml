@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: database-replicaset
+  namespace: sqldb
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mysql
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: mysql
+        version: v1
+    spec:
+      containers:
+      - name: sqldb-v1
+        image: 168491602991.dkr.ecr.us-east-1.amazonaws.com/sqldb-repo:v1
+        ports:
+        - containerPort: 3306
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: Prason1234
