@@ -23,10 +23,11 @@ spec:
         image: 168491602991.dkr.ecr.us-east-1.amazonaws.com/webapp-repo:v1
         ports:
         - containerPort: 8080
-        env:
-        - name: DBHOST
-          value: 10.244.0.9
-        - name: DBPWD
-          value: Prason1234
-        - name: DBPORT
-          value: "3306"
+        envFrom:
+        - configMapRef:
+            name: hostsql
+        - secretRef:
+            name: mypassword 
+        env: 
+          - name: DBPORT
+            value: "3306"

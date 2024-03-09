@@ -20,6 +20,6 @@ spec:
         image: 168491602991.dkr.ecr.us-east-1.amazonaws.com/sqldb-repo:v1
         ports:
         - containerPort: 3306
-        env:
-        - name: MYSQL_ROOT_PASSWORD
-          value: Prason1234   
+        envFrom:
+        - secretRef:
+            name: mypassword

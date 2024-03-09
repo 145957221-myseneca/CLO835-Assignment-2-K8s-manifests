@@ -7,11 +7,12 @@ metadata:
   namespace: webapp
 spec:
   containers:
-  - env:
-    - name: DBHOST
-      value: 10.244.0.35
-    - name: DBPWD
-      value: Prason1234
+  - envFrom:
+    - configMapRef:
+        name: hostsql
+    - secretRef:
+        name: mypassword 
+    env: 
     - name: DBPORT
       value: "3306"
     image: 168491602991.dkr.ecr.us-east-1.amazonaws.com/webapp-repo:v1
