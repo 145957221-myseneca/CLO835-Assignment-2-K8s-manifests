@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: database-replicaset
+  name: database-replica
   namespace: sqldb
+  labels:
+    app: mysql
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: mysql
-      version: v1
   template:
     metadata:
       labels:
         app: mysql
-        version: v1
     spec:
       containers:
-      - name: sqldb-v1
+      - name: sqldb
         image: 168491602991.dkr.ecr.us-east-1.amazonaws.com/sqldb-repo:v1
         ports:
         - containerPort: 3306
